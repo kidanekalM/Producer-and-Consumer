@@ -1,9 +1,33 @@
 *{
     box-sizing: border-box;
 }
+.control{
+    height: 20vh;
+    width: 100vw;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    position: absolute;
+    gap:1rem;
+}
+#start{
+    background-color: white;
+    border: 1px solid blue;
+    font-size: large;
+    margin : 2rem;
+    border-radius: 5px;
+    grid-area: 'start';
+}
+.t{
+    display: flex;
+    flex-direction: column;
+}
+input{
+    border-radius: 5px;
+}
 .wrapper{
     height: 100vh;
-    display: grid;
+    display: flex;
     grid-template-areas: '. . .';
     justify-content: center;
     align-items: center;
@@ -19,6 +43,10 @@
     justify-content: center;
     background-color: rgb(191, 255, 64);
 }
+.bufferCont{
+    display: flex;
+    flex-direction: column;
+}
 #consumer{
 
 }
@@ -27,13 +55,17 @@ h2{
 }
 
 .buffer{
-    height: 5vw;
+    width: 20vw;
+    height: 50px;
+    align-items: center;
     display: flex;
     gap: 1rem;
     border-radius: 5px;
+    border: 1px solid black;
+    padding: 1px;
 }
 .item{
-    height: 5vw;
+    height: 40px;
     width: 2vw;
     background-color: rgb(0, 112, 112);
     border: 1px solid black;
@@ -41,7 +73,6 @@ h2{
     animation-duration: 1s;
     animation-iteration-count: 1;
 }
-
 
 @keyframes produce {
     from{
@@ -58,6 +89,45 @@ h2{
     }
     to{
         position: relative;
-        left: 5vw;
+        left: 100%;
+        opacity: 50%;
+    }
+}
+
+@media (max-width:800px) {
+    .control{
+        display: grid;
+        height: 10vh;
+        position: initial;
+        grid-template-areas: "."
+                            "start";
+    }
+    .wrapper{
+        flex-direction: column;
+    }
+    #producer{
+        position: relative;
+        left:-100px;
+    }
+    #consumer{
+        position: relative;
+        left: 100px;
+    }
+    #start{
+        margin: 3px;
+        
+    }
+    .buffer{
+        width: 140px;
+        height: 50px;
+        gap: 2px;
+    }
+    .item{
+        height: 40px;
+        width: 20px;
+    }
+    .process{
+        width: 100px;
+        height: 100px;
     }
 }

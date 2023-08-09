@@ -7,9 +7,21 @@
     <link rel="stylesheet" href="./index.css">
 </head>
 <body>
+    <div class="control">
+        <div class="t">
+            <label for="producerTime">Producer Time</label> <input id="producerTime" type="number" max="5" min="0" value="1">
+        </div>
+        <button id="start">Start</button>
+        <div class="t">
+            <label for="consumerTime">Consumer Time</label> <input id="consumerTime" type="number" max="5" min="0" value="2">
+        </div>
+    </div>
     <div class="wrapper">
         <div class="process" id="producer"><h2>Producer</h2></div>
-        <div class="buffer" id="buffer"><div class="item"></div></div>
+        <div class="bufferCont">
+            <label for="buffer">Buffer</label>
+        <div class="buffer" id="buffer"></div>
+        </div>
         <div class="process"id="consumer"><h2>Consumer</h2></div>
     </div>
 </body>
