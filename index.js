@@ -7,11 +7,13 @@ function produce(time) {
 timer.producer =  setInterval(function () {
     console.log("producing");
     buffer = document.getElementById('buffer')
+    let producer = document.getElementById('producer')
     if(buffer.children.length==max){
-        document.getElementById('producer').style.backgroundColor="goldenrod"
+        producer.style.backgroundColor="goldenrod"
+
     }
     else{
-        document.getElementById('producer').style.backgroundColor="rgb(191, 255, 64)"
+        producer.style.backgroundColor="rgb(191, 255, 64)"
         let job = document.createElement('div')
         job.className = "item"
         job.animationName ="produce"
@@ -25,13 +27,15 @@ function consume(time) {
     console.log(buffer);
     buffer = document.getElementById('buffer')
         if((buffer.childElementCount>0)&& (buffer.lastElementChild)){
-            document.getElementById('consumer').style.backgroundColor="rgb(191, 255, 64)"
+            let consumer = document.getElementById('consumer')
+            consumer.style.backgroundColor="rgb(191, 255, 64)"
             job = buffer.lastElementChild;
-            console.log(job);
             job.style.animationName = "consume"
+            job.style.animationDuration = (time/1000)+"s"
+            
             setTimeout(() => {
                 if(buffer.childElementCount>0){
-                    buffer.removeChild(job)
+                    buffer.removeChild(buffer.lastElementChild)
                 }
             }, 2000);
 
@@ -43,13 +47,14 @@ function consume(time) {
 }
 document.getElementById('start').addEventListener('click',function () {
 if(this.innerText == "Start"){
-    this.innerText = "Stop";
     let ct = parseFloat(document.getElementById('consumerTime').value);
     let pt = parseFloat(document.getElementById('producerTime').value);
-    if((ct < 0)|| (pt<0)){
-        alert("time cannot be less than 0")
+    if((ct < 0)|| (pt<0) || (ct>20) || (pt>20)){
+        alert("time cannot be less than 0 and greater than 20")
     }
     else{
+        this.innerText = "Stop";
+        this.style.backgroundColor = "red"
         consume(ct*1000)
         produce(pt*1000)
 
@@ -59,5 +64,6 @@ else{
     clearInterval(timer.consumer)
     clearInterval(timer.producer)
     this.innerText = "Start";
+    this.style.backgroundColor="blue"
 }
 })

@@ -11,10 +11,13 @@
     gap:1rem;
 }
 #start{
-    background-color: white;
-    border: 1px solid blue;
+    background-color: blue;
+    color: white;
+    border: none;
+    box-shadow: 0 1px 2px 1px grey;
     font-size: large;
     margin : 2rem;
+    padding: 0 2rem;
     border-radius: 5px;
     grid-area: 'start';
 }
@@ -39,6 +42,7 @@ input{
     border-radius: 10vw;
     box-shadow: 0 0 3px 3px gray;
     display: flex;
+    border: 1px r;
     align-items: center;
     justify-content: center;
     background-color: rgb(191, 255, 64);
@@ -48,7 +52,6 @@ input{
     flex-direction: column;
 }
 #consumer{
-
 }
 h2{
     text-align: center;
@@ -63,6 +66,7 @@ h2{
     border-radius: 5px;
     border: 1px solid black;
     padding: 1px;
+    /* justify-content: end; */
 }
 .item{
     height: 40px;
@@ -74,7 +78,6 @@ h2{
     animation-duration: 1s;
     animation-iteration-count: 1;
 }
-
 @keyframes produce {
     from{
         position: relative;
@@ -99,6 +102,7 @@ h2{
     .control{
         display: grid;
         height: 10vh;
+        width: initial;
         position: initial;
         grid-template-areas: "."
                             "start";
@@ -115,8 +119,7 @@ h2{
         left: 100px;
     }
     #start{
-        margin: 3px;
-        
+        margin: 3px;   
     }
     .buffer{
         width: 140px;
