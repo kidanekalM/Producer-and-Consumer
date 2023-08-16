@@ -9,11 +9,13 @@ timer.producer =  setInterval(function () {
     buffer = document.getElementById('buffer')
     let producer = document.getElementById('producer')
     if(buffer.children.length==max){
-        producer.style.backgroundColor="goldenrod"
+        producer.style.backgroundColor="lightgrey"
+        producer.firstElementChild.innerText="Producer waiting"
 
     }
     else{
         producer.style.backgroundColor="rgb(191, 255, 64)"
+        producer.firstElementChild.innerText="Producer"
         let job = document.createElement('div')
         job.className = "item"
         job.animationName ="produce"
@@ -26,9 +28,11 @@ function consume(time) {
     console.log("consuming");
     console.log(buffer);
     buffer = document.getElementById('buffer')
+    let consumer = document.getElementById('consumer')
         if((buffer.childElementCount>0)&& (buffer.lastElementChild)){
-            let consumer = document.getElementById('consumer')
             consumer.style.backgroundColor="rgb(191, 255, 64)"
+            consumer.firstElementChild.innerText="Consumer"
+
             job = buffer.lastElementChild;
             job.style.animationName = "consume"
             job.style.animationDuration = (time/1000)+"s"
@@ -41,7 +45,8 @@ function consume(time) {
 
         }
         else{
-            document.getElementById('consumer').style.backgroundColor="goldenrod"
+            consumer.firstElementChild.innerText="Consumer waiting"
+            document.getElementById('consumer').style.backgroundColor="lightgrey"
         }
     },time,timer)
 }
