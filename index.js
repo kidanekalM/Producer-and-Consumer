@@ -11,9 +11,12 @@ timer.producer =  setInterval(function () {
     if(buffer.children.length==max){
         producer.style.backgroundColor="lightgrey"
         producer.firstElementChild.innerText="Producer waiting"
+        document.getElementById('leftgear').style.animationName=''
 
     }
     else{
+        document.getElementById('leftgear').style.animationName='rotate'
+        document.getElementById('leftgear').style.animationDuration=time+'ms'
         producer.style.backgroundColor="rgb(191, 255, 64)"
         producer.firstElementChild.innerText="Producer"
         let job = document.createElement('div')
@@ -32,7 +35,9 @@ function consume(time) {
         if((buffer.childElementCount>0)&& (buffer.lastElementChild)){
             consumer.style.backgroundColor="rgb(191, 255, 64)"
             consumer.firstElementChild.innerText="Consumer"
-
+            document.getElementById('rightgear').style.animationName='rotate'
+            document.getElementById('rightgear').style.animationDuration=time+'ms'
+            
             job = buffer.lastElementChild;
             job.style.animationName = "consume"
             job.style.animationDuration = (time/1000)+"s"
@@ -45,6 +50,7 @@ function consume(time) {
 
         }
         else{
+            document.getElementById('rightgear').style.animationName=''
             consumer.firstElementChild.innerText="Consumer waiting"
             document.getElementById('consumer').style.backgroundColor="lightgrey"
         }
@@ -66,6 +72,8 @@ if(this.innerText == "Start"){
     }
 }
 else{
+    document.getElementById('leftgear').style.animationName=''
+    document.getElementById('rightgear').style.animationName=''
     clearInterval(timer.consumer)
     clearInterval(timer.producer)
     this.innerText = "Start";
